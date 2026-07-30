@@ -286,7 +286,7 @@ export function Cart({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem, o
                       />
                       <div className="flex flex-1 flex-col">
                         <h4 className="line-clamp-1 font-bold text-slate-800 text-sm">{item.name}</h4>
-                        <p className="text-sm font-semibold text-slate-900 mt-1">{item.price.toFixed(2)}€</p>
+                        <p className="text-sm font-semibold text-slate-900 mt-1" translate="no">{item.price.toFixed(2)}€</p>
                         
                         <div className="mt-2 flex items-center justify-between">
                           <div className="flex items-center rounded-lg border border-slate-200 bg-slate-50">
@@ -296,7 +296,7 @@ export function Cart({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem, o
                             >
                               <Minus className="h-3.5 w-3.5" />
                             </button>
-                            <span className="w-8 text-center text-sm font-medium text-slate-700">
+                            <span className="w-8 text-center text-sm font-medium text-slate-700" translate="no">
                               {item.quantity}
                             </span>
                             <button
@@ -325,17 +325,17 @@ export function Cart({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem, o
                 <div className="mb-4 space-y-2 text-sm text-slate-500">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span className="font-medium text-slate-700">{subtotal.toFixed(2)}€</span>
+                    <span className="font-medium text-slate-700" translate="no">{subtotal.toFixed(2)}€</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Envío ({formData.region})</span>
-                    <span className={`font-semibold ${shipping === 0 ? 'text-emerald-500' : 'text-slate-700'}`}>
+                    <span className={`font-semibold ${shipping === 0 ? 'text-emerald-500' : 'text-slate-700'}`} translate="no">
                       {shipping === 0 ? 'Gratis' : `+${shipping.toFixed(2)}€`}
                     </span>
                   </div>
                   <div className="flex justify-between border-t border-slate-100 pt-3 text-lg font-bold text-slate-900">
                     <span>Total a Pagar en Casa</span>
-                    <span className="text-indigo-600">{total.toFixed(2)}€</span>
+                    <span className="text-indigo-600" translate="no">{total.toFixed(2)}€</span>
                   </div>
                 </div>
                 

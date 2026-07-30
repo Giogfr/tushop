@@ -114,7 +114,7 @@ export default function App() {
             aria-label="Abrir carrito"
           >
             <ShoppingCart className="h-4 w-4" />
-            Carrito ({cartItemsCount})
+            <span className="hidden sm:inline">Carrito</span> <span translate="no" className="font-bold">({cartItemsCount})</span>
           </motion.button>
         </div>
       </header>
