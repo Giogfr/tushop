@@ -171,7 +171,8 @@ export default function Admin() {
   ];
 
   const totalRevenue = orders.reduce((acc, o) => {
-    const val = typeof o.total === 'string' ? parseFloat(o.total.replace('€', '')) : o.total;
+    if (!o || !o.total) return acc;
+    const val = typeof o.total === 'string' ? parseFloat(o.total.replace('€', '')) : Number(o.total);
     return acc + (isNaN(val) ? 0 : val);
   }, 0);
 
@@ -476,7 +477,7 @@ export default function Admin() {
                                   <span className="font-medium text-slate-800">{item.quantity}x</span>
                                   <span className="text-slate-600 line-clamp-1">{item.name}</span>
                                 </div>
-                                <span className="font-medium text-slate-700">{(item.price * item.quantity).toFixed(2)}€</span>
+                                <span className="font-medium text-slate-700">{((Number(item.price) || 0) * (Number(item.quantity) || 1)).toFixed(2)}€</span>
                               </div>
                             ))}
                             <div className="border-t border-slate-200 pt-3 flex items-center justify-between font-bold">
