@@ -13,6 +13,7 @@ export default function Admin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [renderError, setRenderError] = useState<string | null>(null);
   
   const [activeTab, setActiveTab] = useState('dashboard');
   const [orders, setOrders] = useState<any[]>([]);
@@ -397,26 +398,34 @@ export default function Admin() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {adminProducts.map((product) => (
-                      <tr key={product.id} className="hover:bg-slate-50 transition-colors">
-                        <td className="py-4">
-                          <div className="flex items-center gap-3">
-                            <img src={product.imageUrl} alt={product.name} className="h-10 w-10 rounded-lg object-cover bg-slate-100" />
-                            <span className="text-sm font-medium text-slate-800">{product.name}</span>
-                          </div>
-                        </td>
-                        <td className="py-4 text-sm text-slate-600">
-                          <span className="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full text-xs font-medium">
-                            {product.category}
-                          </span>
-                        </td>
-                        <td className="py-4 text-sm font-bold text-slate-800">{(Number(product.price) || 0).toFixed(2)}€</td>
-                        <td className="py-4">
-                          <button onClick={() => handleEditProduct(product)} className="text-indigo-600 hover:text-indigo-800 text-sm font-medium mr-3">Editar</button>
-                          <button onClick={() => handleDeleteProduct(product.id)} className="text-rose-600 hover:text-rose-800 text-sm font-medium">Eliminar</button>
+                    {adminProducts && adminProducts.length > 0 ? (
+                      adminProducts.map((product) => (
+                        <tr key={product?.id || Math.random()} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-4">
+                            <div className="flex items-center gap-3">
+                              <img src={product?.imageUrl || '/tushop.jpg'} alt={product?.name || 'Producto'} className="h-10 w-10 rounded-lg object-cover bg-slate-100" />
+                              <span className="text-sm font-medium text-slate-800">{product?.name || 'Sin nombre'}</span>
+                            </div>
+                          </td>
+                          <td className="py-4 text-sm text-slate-600">
+                            <span className="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full text-xs font-medium">
+                              {product?.category || 'General'}
+                            </span>
+                          </td>
+                          <td className="py-4 text-sm font-bold text-slate-800">{(Number(product?.price) || 0).toFixed(2)}€</td>
+                          <td className="py-4">
+                            <button onClick={() => handleEditProduct(product)} className="text-indigo-600 hover:text-indigo-800 text-sm font-medium mr-3">Editar</button>
+                            <button onClick={() => handleDeleteProduct(product?.id)} className="text-rose-600 hover:text-rose-800 text-sm font-medium">Eliminar</button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="py-8 text-center text-sm text-slate-500">
+                          No hay productos registrados. Haz clic en "+ Añadir Producto" para crear uno.
                         </td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
