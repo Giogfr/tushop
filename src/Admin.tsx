@@ -409,7 +409,7 @@ export default function Admin() {
                             {product.category}
                           </span>
                         </td>
-                        <td className="py-4 text-sm font-bold text-slate-800">{Number(product.price).toFixed(2)}€</td>
+                        <td className="py-4 text-sm font-bold text-slate-800">{(Number(product.price) || 0).toFixed(2)}€</td>
                         <td className="py-4">
                           <button onClick={() => handleEditProduct(product)} className="text-indigo-600 hover:text-indigo-800 text-sm font-medium mr-3">Editar</button>
                           <button onClick={() => handleDeleteProduct(product.id)} className="text-rose-600 hover:text-rose-800 text-sm font-medium">Eliminar</button>
