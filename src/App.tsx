@@ -95,7 +95,7 @@ export default function App() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <img src="/tushop.jpg" alt="TuShop Logo" className="h-8 w-8 rounded-lg object-cover" />
-            <span className="text-2xl font-extrabold tracking-tight text-slate-800">
+            <span className="text-2xl font-extrabold tracking-tight text-slate-800" translate="no">
               TuShop
             </span>
           </div>

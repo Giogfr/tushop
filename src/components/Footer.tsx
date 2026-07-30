@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
-            <span className="text-2xl font-extrabold tracking-tight text-slate-800">TuShop</span>
+            <span className="text-2xl font-extrabold tracking-tight text-slate-800" translate="no">TuShop</span>
             <p className="mt-4 max-w-sm text-sm text-slate-500 leading-relaxed">
               La tienda online moderna donde encuentras lo mejor en tecnología, moda y accesorios. Compra seguro desde casa y paga al recibir tu paquete.
             </p>

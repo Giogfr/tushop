@@ -189,10 +189,10 @@ export default function Admin() {
       {/* Mobile Top Header */}
       <div className="md:hidden bg-slate-900 text-white p-4 flex items-center justify-between sticky top-0 z-30 shadow-md">
         <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-indigo-500 flex items-center justify-center text-lg font-bold">
+          <div className="h-8 w-8 rounded-lg bg-indigo-500 flex items-center justify-center text-lg font-bold" translate="no">
             T
           </div>
-          <span className="text-lg font-extrabold tracking-tight">
+          <span className="text-lg font-extrabold tracking-tight" translate="no">
             TuShop Admin
           </span>
         </div>
@@ -221,10 +221,10 @@ export default function Admin() {
       >
         <div className="p-6 hidden md:block">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-indigo-500 flex items-center justify-center text-xl font-bold">
+            <div className="h-8 w-8 rounded-lg bg-indigo-500 flex items-center justify-center text-xl font-bold" translate="no">
               T
             </div>
-            <span className="text-xl font-extrabold tracking-tight">
+            <span className="text-xl font-extrabold tracking-tight" translate="no">
               TuShop Admin
             </span>
           </div>
@@ -289,10 +289,12 @@ export default function Admin() {
           <header className="mb-6 md:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-slate-800">
-                {activeTab === 'dashboard' && 'Resumen del Panel'}
-                {activeTab === 'products' && 'Gestión de Productos'}
-                {activeTab === 'orders' && 'Historial de Pedidos'}
-                {activeTab === 'settings' && 'Configuración del Sitio'}
+                {{
+                  dashboard: 'Resumen del Panel',
+                  products: 'Gestión de Productos',
+                  orders: 'Historial de Pedidos',
+                  settings: 'Configuración del Sitio'
+                }[activeTab] || 'Resumen del Panel'}
               </h1>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">Bienvenido de nuevo al panel de administración.</p>
             </div>
