@@ -124,9 +124,9 @@ export default function App() {
         <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="relative flex min-h-[400px] items-end overflow-hidden rounded-3xl bg-slate-900 p-8 sm:p-12 pb-16">
             <img 
-              src="/756430686_1014343501505892_1074541875611598180_n.jpg" 
+              src="/banner.jpg" 
               alt="Colección TuShop" 
-              className="absolute inset-0 h-full w-full object-cover opacity-60" 
+              className="absolute inset-0 h-full w-full object-cover opacity-80" 
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/10"></div>
             <div className="relative z-10 max-w-lg w-full">
