@@ -1,0 +1,6 @@
+{
+  "name": "TuShop.es",
+  "description": "Tienda online moderna, optimizada para SEO, con catálogo y pago contra reembolso.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

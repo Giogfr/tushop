@@ -1,0 +1,124 @@
+{
+  "projectInfo": {
+    "name": "TuShop",
+    "description": "E-commerce platform with admin panel and user storefront"
+  },
+  "collections": [
+    {
+      "name": "products",
+      "description": "Store inventory products",
+      "documentId": "Random auto-generated string",
+      "schema": {
+        "name": {
+          "type": "string",
+          "description": "Product name"
+        },
+        "category": {
+          "type": "string",
+          "description": "Product category"
+        },
+        "price": {
+          "type": "number",
+          "description": "Product price"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Product image URL"
+        },
+        "description": {
+          "type": "string",
+          "description": "Product description"
+        }
+      },
+      "rules": {
+        "read": "true",
+        "create": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'",
+        "update": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'",
+        "delete": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'"
+      }
+    },
+    {
+      "name": "orders",
+      "description": "Customer orders",
+      "documentId": "Random auto-generated string",
+      "schema": {
+        "id": {
+          "type": "string",
+          "description": "Order ID (e.g. #ORD-1234)"
+        },
+        "customer": {
+          "type": "string",
+          "description": "Customer name"
+        },
+        "address": {
+          "type": "string",
+          "description": "Delivery address"
+        },
+        "city": {
+          "type": "string",
+          "description": "City or Population"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer phone"
+        },
+        "date": {
+          "type": "string",
+          "description": "Order date in YYYY-MM-DD"
+        },
+        "total": {
+          "type": "string",
+          "description": "Order total"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order status (Pendiente, Entregado, etc)"
+        },
+        "items": {
+          "type": "array",
+          "description": "Array of ordered items",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "quantity": { "type": "number" }
+            }
+          }
+        },
+        "userId": {
+          "type": "string",
+          "description": "Optional user ID of the customer"
+        }
+      },
+      "rules": {
+        "read": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'",
+        "create": "true",
+        "update": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'",
+        "delete": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'"
+      }
+    },
+    {
+      "name": "users",
+      "description": "User profiles and roles",
+      "documentId": "User's UID from Firebase Auth",
+      "schema": {
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "role": {
+          "type": "string",
+          "description": "User role, e.g., 'admin' or 'customer'"
+        }
+      },
+      "rules": {
+        "read": "request.auth != null && (request.auth.uid == document || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')",
+        "create": "request.auth != null && request.auth.uid == document",
+        "update": "request.auth != null && (request.auth.uid == document || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')",
+        "delete": "request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'"
+      }
+    }
+  ]
+}
